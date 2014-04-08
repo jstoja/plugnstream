@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'plugnstream'
+
+ENV['ENVIRONMENT'] = 'production'
+Plugnstream::Cli.start(ARGV)

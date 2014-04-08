@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+require 'socket'
+require 'msgpack'
+require 'thor'
+
+INIT = {"to" => "client", "action" => "init"}.to_msgpack.to_s
+CREATE_USER = {"from" => "client", "action" => "new_user", "mail" => "me@noob.com", "name" => "julien", "password" => "passdemerde"}.to_msgpack.to_s
+CLOSE = {"action" => "close"}.to_msgpack.to_s
+
+module FakeClient
+  class New < Thor
+    desc "client", "add a new client"
+    def client
+      send_all(INIT, CREATE_USER, CLOSE)
+    end
+  end
+
+  class Cli < Thor
+    desc "new SUBCOMMAND ...ARGS", "manage all the additions"
+    subcommand "new", New
+
+    desc "delete SUBCOMMAND ...ARGS", "manage all the deletions"
+    subcommand "new", New
+  end
+end
+
+def send_all(*argv)
+  TCPSocket.open("localhost", 9000) {|s|
+    s.set_encoding 'utf-8'
+
+    argv.each do |arg|
+      s.send(arg)
+      s.flush
+    end
+
+    s.close
+  }
+end
+
+FakeClient::Cli.start(ARGV)

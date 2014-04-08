@@ -1,0 +1,133 @@
+D, [2014-03-05T18:32:18.991594 #14919] DEBUG -- :   [1m[36m (3.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-03-05T18:32:18.992915 #14919] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-03-05T18:32:18.993687 #14919] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-03-05T18:32:18.993770 #14919]  INFO -- : Migrating to CreateUsers (1)
+D, [2014-03-05T18:32:18.994370 #14919] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-03-05T18:32:18.995925 #14919] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "mail" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "token_salt" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-03-05T18:32:18.997186 #14919] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_id" ON "users" ("id")
+D, [2014-03-05T18:32:19.003290 #14919] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+D, [2014-03-05T18:32:19.004139 #14919] DEBUG -- :   [1m[35m (0.6ms)[0m  commit transaction
+I, [2014-03-05T18:32:19.004192 #14919]  INFO -- : Migrating to CreateServers (2)
+D, [2014-03-05T18:32:19.004756 #14919] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-03-05T18:32:19.005679 #14919] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "servers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar(255) NOT NULL, "type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) 
+D, [2014-03-05T18:32:19.006277 #14919] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_servers_on_id" ON "servers" ("id")[0m
+D, [2014-03-05T18:32:19.007078 #14919] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+D, [2014-03-05T18:32:19.007880 #14919] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+I, [2014-03-05T18:32:19.007923 #14919]  INFO -- : Migrating to CreateSessions (3)
+D, [2014-03-05T18:32:19.008494 #14919] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-03-05T18:32:19.009359 #14919] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" number NOT NULL, "server_id" number NOT NULL, "time_start" datetime NOT NULL, "time_end" datetime NOT NULL, "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-03-05T18:32:19.009973 #14919] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_sessions_on_id" ON "sessions" ("id")
+D, [2014-03-05T18:32:19.010690 #14919] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+D, [2014-03-05T18:32:19.011462 #14919] DEBUG -- :   [1m[35m (0.6ms)[0m  commit transaction
+D, [2014-03-05T18:44:34.965486 #15824] DEBUG -- :   [1m[36m (3.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-03-05T18:44:34.966679 #15824] DEBUG -- :   [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-03-05T18:44:34.967418 #15824] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-03-05T18:44:34.967491 #15824]  INFO -- : Migrating to CreateUsers (1)
+D, [2014-03-05T18:44:34.968167 #15824] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-03-05T18:44:34.969902 #15824] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "mail" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "token_salt" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-03-05T18:44:34.971172 #15824] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_id" ON "users" ("id")
+D, [2014-03-05T18:44:34.976176 #15824] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+D, [2014-03-05T18:44:34.977070 #15824] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+I, [2014-03-05T18:44:34.977126 #15824]  INFO -- : Migrating to CreateServers (2)
+D, [2014-03-05T18:44:34.977654 #15824] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-03-05T18:44:34.978518 #15824] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "servers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar(255) NOT NULL, "type" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) 
+D, [2014-03-05T18:44:34.979125 #15824] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_servers_on_id" ON "servers" ("id")[0m
+D, [2014-03-05T18:44:34.979931 #15824] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+D, [2014-03-05T18:44:34.980639 #15824] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+I, [2014-03-05T18:44:34.980712 #15824]  INFO -- : Migrating to CreateSessions (3)
+D, [2014-03-05T18:44:34.981281 #15824] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-03-05T18:44:34.982312 #15824] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" number NOT NULL, "server_id" number NOT NULL, "time_start" datetime NOT NULL, "time_end" datetime NOT NULL, "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-03-05T18:44:34.982990 #15824] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_sessions_on_id" ON "sessions" ("id")
+D, [2014-03-05T18:44:34.983782 #15824] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+D, [2014-03-05T18:44:34.985255 #15824] DEBUG -- :   [1m[35m (1.3ms)[0m  commit transaction
+D, [2014-03-28T16:45:32.192514 #21329] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-03-28T16:45:46.244210 #21464] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-03-28T16:46:09.729189 #21508] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-03-28T16:46:38.758877 #21566] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-03-28T16:46:58.799388 #21616] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-03-28T16:46:58.800414 #21616] DEBUG -- :   [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-03-28T16:46:58.801150 #21616] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-03-28T16:46:58.801221 #21616]  INFO -- : Migrating to CreateUsers (1)
+D, [2014-03-28T16:46:58.801783 #21616] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-03-28T16:46:58.806392 #21616] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "mail" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "token_salt" varchar(255) NOT NULL, "level" integer DEFAULT 0, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-03-28T16:46:58.807783 #21616] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_id" ON "users" ("id")
+D, [2014-03-28T16:46:58.813378 #21616] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+D, [2014-03-28T16:46:58.814228 #21616] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+I, [2014-03-28T16:46:58.814280 #21616]  INFO -- : Migrating to CreateRessources (2)
+D, [2014-03-28T16:46:58.814836 #21616] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+D, [2014-03-28T16:46:58.816013 #21616] DEBUG -- :   [1m[35m (0.4ms)[0m  CREATE TABLE "ressources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar(255) NOT NULL, "type" varchar(255) NOT NULL, "occupied" boolean DEFAULT 'f' NOT NULL, "exist" boolean DEFAULT 't' NOT NULL, "created_at" datetime, "updated_at" datetime) 
+D, [2014-03-28T16:46:58.816693 #21616] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_ressources_on_id" ON "ressources" ("id")[0m
+D, [2014-03-28T16:46:58.817571 #21616] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+D, [2014-03-28T16:46:58.818367 #21616] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+I, [2014-03-28T16:46:58.818411 #21616]  INFO -- : Migrating to CreateSessions (3)
+D, [2014-03-28T16:46:58.819343 #21616] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-03-28T16:46:58.820292 #21616] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" number NOT NULL, "server_id" number NOT NULL, "time_start" datetime NOT NULL, "time_end" datetime NOT NULL, "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-03-28T16:46:58.820919 #21616] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_sessions_on_id" ON "sessions" ("id")
+D, [2014-03-28T16:46:58.821657 #21616] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+D, [2014-03-28T16:46:58.822529 #21616] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+D, [2014-04-03T16:11:28.642356 #37647] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-04-03T16:11:28.643985 #37647] DEBUG -- :   [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-04-03T16:11:28.645091 #37647] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-04-03T16:11:28.645227 #37647]  INFO -- : Migrating to CreateUsers (1)
+D, [2014-04-03T16:11:28.646362 #37647] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-04-03T16:11:28.652520 #37647] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "mail" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "token_salt" varchar(255) NOT NULL, "level" integer DEFAULT 0, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-04-03T16:11:28.653992 #37647] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_id" ON "users" ("id")
+D, [2014-04-03T16:11:28.672230 #37647] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+D, [2014-04-03T16:11:28.673177 #37647] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+I, [2014-04-03T16:11:28.673232 #37647]  INFO -- : Migrating to CreateRessources (2)
+D, [2014-04-03T16:11:28.674087 #37647] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-04-03T16:11:28.675143 #37647] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "ressources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar(255) NOT NULL, "type" varchar(255) NOT NULL, "occupied" boolean DEFAULT 'f' NOT NULL, "exist" boolean DEFAULT 't' NOT NULL, "created_at" datetime, "updated_at" datetime) 
+D, [2014-04-03T16:11:28.675757 #37647] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_ressources_on_id" ON "ressources" ("id")[0m
+D, [2014-04-03T16:11:28.676557 #37647] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+D, [2014-04-03T16:11:28.677553 #37647] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+I, [2014-04-03T16:11:28.677604 #37647]  INFO -- : Migrating to CreateSessions (3)
+D, [2014-04-03T16:11:28.678370 #37647] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-04-03T16:11:28.679282 #37647] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" number NOT NULL, "server_id" number NOT NULL, "time_start" datetime NOT NULL, "time_end" datetime NOT NULL, "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-04-03T16:11:28.679903 #37647] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_sessions_on_id" ON "sessions" ("id")
+D, [2014-04-03T16:11:28.680849 #37647] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+D, [2014-04-03T16:11:28.681669 #37647] DEBUG -- :   [1m[35m (0.6ms)[0m  commit transaction
+D, [2014-04-03T16:11:32.369414 #37676] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-04-03T16:13:02.169718 #37737] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-04-03T16:13:33.636985 #37773] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-04-03T16:15:07.033377 #37894] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-04-03T16:15:07.034463 #37894] DEBUG -- :   [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-04-03T16:15:07.035451 #37894] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-04-03T16:15:07.035541 #37894]  INFO -- : Migrating to CreateUsers (1)
+D, [2014-04-03T16:15:07.036382 #37894] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-04-03T16:15:07.041163 #37894] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "mail" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "token_salt" varchar(255) NOT NULL, "level" integer DEFAULT 0, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-04-03T16:15:07.042849 #37894] DEBUG -- :   [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_id" ON "users" ("id")
+D, [2014-04-03T16:15:07.060275 #37894] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+D, [2014-04-03T16:15:07.061159 #37894] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+I, [2014-04-03T16:15:07.061210 #37894]  INFO -- : Migrating to CreateRessources (2)
+D, [2014-04-03T16:15:07.061765 #37894] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-04-03T16:15:07.062769 #37894] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "ressources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar(255) NOT NULL, "type" varchar(255) NOT NULL, "occupied" boolean DEFAULT 'f' NOT NULL, "exist" boolean DEFAULT 't' NOT NULL, "created_at" datetime, "updated_at" datetime) 
+D, [2014-04-03T16:15:07.063429 #37894] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_ressources_on_id" ON "ressources" ("id")[0m
+D, [2014-04-03T16:15:07.064269 #37894] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+D, [2014-04-03T16:15:07.065032 #37894] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+I, [2014-04-03T16:15:07.065077 #37894]  INFO -- : Migrating to CreateSessions (3)
+D, [2014-04-03T16:15:07.065622 #37894] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-04-03T16:15:07.066658 #37894] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" number NOT NULL, "server_id" number NOT NULL, "time_start" datetime NOT NULL, "time_end" datetime NOT NULL, "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-04-03T16:15:07.067320 #37894] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE UNIQUE INDEX "index_sessions_on_id" ON "sessions" ("id")
+D, [2014-04-03T16:15:07.068164 #37894] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+D, [2014-04-03T16:15:07.068985 #37894] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+D, [2014-04-06T07:48:20.951995 #58056] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-04-06T07:48:20.953104 #58056] DEBUG -- :   [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-04-06T07:48:20.953860 #58056] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-04-06T07:48:20.953939 #58056]  INFO -- : Migrating to CreateUsers (1)
+D, [2014-04-06T07:48:20.954471 #58056] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-04-06T07:48:20.959153 #58056] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "mail" varchar(255) NOT NULL, "password" varchar(255) NOT NULL, "password_salt" varchar(255) NOT NULL, "token_salt" varchar(255) NOT NULL, "level" integer DEFAULT 0, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-04-06T07:48:20.960491 #58056] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_id" ON "users" ("id")
+D, [2014-04-06T07:48:20.966662 #58056] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+D, [2014-04-06T07:48:20.967573 #58056] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+I, [2014-04-06T07:48:20.967628 #58056]  INFO -- : Migrating to CreateRessources (2)
+D, [2014-04-06T07:48:20.968194 #58056] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-04-06T07:48:20.969168 #58056] DEBUG -- :   [1m[35m (0.3ms)[0m  CREATE TABLE "ressources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ip_address" varchar(255) NOT NULL, "type" varchar(255) NOT NULL, "occupied" boolean DEFAULT 'f' NOT NULL, "exist" boolean DEFAULT 't' NOT NULL, "created_at" datetime, "updated_at" datetime) 
+D, [2014-04-06T07:48:20.969959 #58056] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_ressources_on_id" ON "ressources" ("id")[0m
+D, [2014-04-06T07:48:20.970872 #58056] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+D, [2014-04-06T07:48:20.971641 #58056] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+I, [2014-04-06T07:48:20.971692 #58056]  INFO -- : Migrating to CreateSessions (3)
+D, [2014-04-06T07:48:20.972293 #58056] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-04-06T07:48:20.973398 #58056] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" number NOT NULL, "server_id" number NOT NULL, "time_start" datetime NOT NULL, "time_end" datetime NOT NULL, "token" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+D, [2014-04-06T07:48:20.974329 #58056] DEBUG -- :   [1m[35m (0.4ms)[0m  CREATE UNIQUE INDEX "index_sessions_on_id" ON "sessions" ("id")
+D, [2014-04-06T07:48:20.975421 #58056] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+D, [2014-04-06T07:48:20.976221 #58056] DEBUG -- :   [1m[35m (0.6ms)[0m  commit transaction
