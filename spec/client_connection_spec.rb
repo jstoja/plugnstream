@@ -3,6 +3,7 @@ require 'msgpack'
 require 'plugnstream'
 require 'spec_helper'
 require 'dispatch/dispatch'
+require 'dispatch/utils'
 
 describe "a client connection" do
   before(:each) do
@@ -68,6 +69,35 @@ describe "client actions" do
   end
 
   it "should be able to login" do
+    create_user = {"from" => "client", "action" => "new_user", "mail" => "me@noob.com", "name" => "julien", "password" => "passdemerde"}.to_msgpack.to_s
+    get_salt = {"from" => "client", "action" => "get_salt", "mail" => "me@noob.com"}
+
+    expect = {"status" => "logged"}
+
+    close = {"to" => "client", "action" => "close"}.to_msgpack.to_s
+    @ret = nil
+
+    TCPSocket.open("localhost", 9000) {|s|
+      s.set_encoding 'utf-8'
+      s.send create_user, 0
+      s.flush
+      get = s.recv(1024)
+
+      s.send get_salt, 0
+      s.flush
+      get = s.recv(1024)
+      ret = MessagePack.unpack(get)
+
+      login = {"from" => "client", "action" => "login", "mail" => "me@noob.com", "password" => Utils::salt_password("passdemerde", ret["salt"])}
+      s.send login, 0
+      s.flush
+      get = s.recv(1024)
+      ret = MessagePack.unpack(get)
+      ret.should eq(expect)
+
+      s.send close, 0
+      s.flush
+    }
   end
 
   it "should be able to delete his account" do
